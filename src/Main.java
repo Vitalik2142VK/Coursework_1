@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main
 {
     public static void Get_list_employees(Employee[] cs)
@@ -59,6 +61,7 @@ public class Main
         {
             System.out.println(cs[i].GetIdEmployee() + ". " + cs[i].GetName());
         }
+        System.out.println("\n");
     }
 
     public static void main(String[] args)
@@ -77,11 +80,48 @@ public class Main
             throw new RuntimeException(e);
         }
 
-        Get_list_employees(companyStaff);
-        System.out.println("Общие расходы на заработную плату сотрудникам: " + Get_total_costs(companyStaff) + " руб.\n");
-        Get_minimum_wage_employee(companyStaff);
-        Get_maximum_wage_employee(companyStaff);
-        System.out.println("Среднее значение заработных плат у сотрудников: " + Get_average_value_wages(companyStaff) + " руб.\n");
-        Get_full_name_all_employees(companyStaff);
+        Scanner in = new Scanner(System.in);
+        int choice;
+        boolean exit = true;
+        int num = 3;
+        do
+        {
+            System.out.println("Книга сотрудников.\n1.\tПолучить информацию о всех сотрдниках.\n2.\tПолучить расход на заработную плату сотрудникам.\n3.\tВывести сотрудника с минимальной заработной платой." +
+                    "\n4.\tВывести сотрудника с максимальной заработной платой.\n5.\tПолучить среднее значение заработных плат у сотрудников.\n6.\tВывести ФИО всех сотрудников\n\nВведите номер пункта:\t");
+            choice = in.nextInt();
+            switch (choice)
+            {
+                case 1:
+                    Get_list_employees(companyStaff); break;
+                case 2:
+                    System.out.println("Общие расходы на заработную плату сотрудникам: " + Get_total_costs(companyStaff) + " руб.\n"); break;
+                case 3:
+                    Get_minimum_wage_employee(companyStaff); break;
+                case 4:
+                    Get_maximum_wage_employee(companyStaff); break;
+                case 5:
+                    System.out.println("Среднее значение заработных плат у сотрудников: " + Get_average_value_wages(companyStaff) + " руб.\n"); break;
+                case 6:
+                    Get_full_name_all_employees(companyStaff); break;
+                default:
+                    if (num == 0)
+                        break;
+                    System.out.println("Не корректно введен пункт!\nВнимание!!! Через '" + num + "' попыток программа завершит свою работу.");
+                    num--;
+                    break;
+            }
+            System.out.println("1.\tПродолжить работу в программе.\n2.\tЗакрыть программу.\n\nВведите номер пункта:\t");
+            choice = in.nextInt();
+            if (choice == 1)
+                exit = true;
+            else if (choice == 2 || num == 0)
+                exit = false;
+            else
+            {
+                System.out.println("Не корректно введен пункт! Программа продолжит работу.\nВнимание!!! Через '" + num + "' попыток программа завершит свою работу.");
+                num--;
+            }
+        }
+        while (exit);
     }
 }
