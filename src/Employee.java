@@ -42,8 +42,8 @@ public class Employee
     {
         this.department = department;
     }
-    public void SetSalary(int salary)
+    public void SetWages(int wages)
     {
-        this.wages = salary;
+        this.wages = wages;
     }
 }
