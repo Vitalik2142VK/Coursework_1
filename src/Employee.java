@@ -15,6 +15,20 @@ public class Employee
     private int department; // отдел сотрудника
     private int wages; // зарплата сотрудника
 
+    // Дополнительные методы
+    public static void Close(Employee employee)
+    {
+        id--;
+        employee = null;
+    }
+    public void Shifting_data_object(Employee other)
+    {
+        this.name = other.name;
+        this.department = other.department;
+        this.wages = other.wages;
+    }
+
+
     // Геттеры
     public static int GetId()
     {
@@ -46,4 +60,5 @@ public class Employee
     {
         this.wages = wages;
     }
+
 }
