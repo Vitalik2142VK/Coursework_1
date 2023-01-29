@@ -1,14 +1,10 @@
 import java.util.Scanner;
 
-public class Main
-{
+public class Main {
 
-
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         EmployeeBook eb = null;
-        try
-        {
+        try {
             eb = new EmployeeBook();
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -18,8 +14,7 @@ public class Main
         int choice;
         boolean exit = true;
         int num = 3;
-        do
-        {
+        do {
             System.out.println("Книга сотрудников.\n1.\tПолучить информацию о всех сотрудниках.\n2.\tПолучить расход на заработную плату сотрудникам." +
                     "\n3.\tВывести сотрудника с минимальной заработной платой.\n4.\tВывести сотрудника с максимальной заработной платой." +
                     "\n5.\tПолучить среднее значение заработных плат у сотрудников.\n6.\tВывести ФИО всех сотрудников." +
@@ -28,8 +23,7 @@ public class Main
                     "\n13.\tПоменять заработную плату у сотрудника.\n14.\tПоменять отдел у сотрудника.\n15.\tПолучить информацию о всех сотрудниках по отделам." +
                     "\n\nВведите номер пункта:\t");
             choice = in.nextInt();
-            switch (choice)
-            {
+            switch (choice) {
                 case 1:
                     eb.Get_list_employees(); break;
                 case 2:
@@ -42,27 +36,23 @@ public class Main
                     System.out.println("Средняя заработная плата у сотрудников: " + eb.Get_average_value_wages() + " руб.\n"); break;
                 case 6:
                     eb.Get_full_name_all_employees(); break;
-                case 7:
-                {
+                case 7: {
                     System.out.println("Введите процент, на который необходимо индекстровать ЗП.\nДля отрицательного индексирования введите число с минусом \"Пример: -30\"");
                     int percent = in.nextInt();
                     eb.Wage_indexation(percent);
                     break;
                 }
-                case 8:
-                {
+                case 8: {
                     System.out.println("Введите номер отдела с 1 по 5, с которым будете работать: ");
                     int department = in.nextInt();
-                    if (department <= 0 || department > 6)
-                    {
+                    if (department <= 0 || department > 6) {
                         System.out.println("Не корректно указан отдел! Необходимо ввести с 1 по 5");
                         break;
                     }
                     System.out.println("1.\tСотрудник с минимальной зарплатой в отделе.\n2.\tСотрудник с максимальной зарплатой в отделе.\n3.\tСумма затрат на заработную плату по отделу." +
                             "\n4.\tСредняя зарплата по отделу.\n5.\tПроиндексировать зарплату всех сотрудников отдела на процент.\n6.\tНапечатать всех сотрудников отдела.\n\nВведите номер пункта:\t");
                     choice = in.nextInt();
-                    switch (choice)
-                    {
+                    switch (choice) {
                         case 1:
                             eb.Get_minimum_wage_employee_in_department(department); break;
                         case 2:
@@ -71,8 +61,7 @@ public class Main
                             System.out.println("Общие расходы на заработную плату сотрудникам из отдела №" + department + "составляет: " + eb.Get_total_costs_in_department(department) + " руб.\n"); break;
                         case 4:
                             System.out.println("Средняя заработная плата у сотрудниковиз отдела №" + department + "составляет: " + eb.Get_average_value_wages_in_department(department) + " руб.\n"); break;
-                        case 5:
-                        {
+                        case 5: {
                             System.out.println("Введите процент, на который необходимо индекстровать ЗП.\nДля отрицательного индексирования введите число с минусом \"Пример: -30\"");
                             int percent = in.nextInt();
                             eb.Wage_indexation_in_department(percent, department);
@@ -80,8 +69,7 @@ public class Main
                         }
                         case 6:
                             eb.Get_list_employees_in_department(department); break;
-                        default:
-                        {
+                        default: {
                             if (num == 0)
                                 break;
                             System.out.println("Не корректно введен пункт!\nВнимание!!! Через '" + num + "' попыток программа завершит свою работу.");
@@ -91,28 +79,22 @@ public class Main
                     }
                     break;
                 }
-                case 9:
-                {
+                case 9: {
                     System.out.println("Введите сумму, для поиска сотрудников с ЗП меньше указанной суммы.");
                     int wagesLower = in.nextInt();
                     eb.Get_wage_employees_below_specified(wagesLower);
                     break;
                 }
-                case 10:
-                {
+                case 10: {
                     System.out.println("Введите сумму, для поиска сотрудников с ЗП больше или равной указанной.");
                     int wagesLower = in.nextInt();
                     eb.Get_wage_employees_more_specified(wagesLower);
                     break;
                 }
-                case 11:
-                {
-                    try
-                    {
+                case 11: {
+                    try {
                         eb.Add_new_employee();
-                    }
-                    catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                     break;
@@ -121,8 +103,7 @@ public class Main
                     eb.Remove_employee(); break;
                 case 13:
                     eb.Change_wage_employee(); break;
-                case 14:
-                {
+                case 14: {
                     try {
                         eb.Change_department_employee();
                     } catch (Exception e) {
@@ -132,8 +113,7 @@ public class Main
                 }
                 case 15:
                     eb.Get_list_employees_by_department(); break;
-                default:
-                {
+                default: {
                     if (num == 0)
                         break;
                     System.out.println("Не корректно введен пункт!\nВнимание!!! Через '" + num + "' попыток программа завершит свою работу.");
@@ -147,8 +127,7 @@ public class Main
                 exit = true;
             else if (choice == 2 || num == 0)
                 exit = false;
-            else
-            {
+            else {
                 System.out.println("Не корректно введен пункт! Программа продолжит работу.\nВнимание!!! Через '" + num + "' попыток программа завершит свою работу.");
                 num--;
             }
