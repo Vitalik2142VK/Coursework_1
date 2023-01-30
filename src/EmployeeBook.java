@@ -20,50 +20,50 @@ public class EmployeeBook {
         }
     }
 
-    public void Get_list_employees() {
-        for (int i = 0; i < Employee.GetId(); i++) {
-            System.out.println("Индекс сотрудника: " + cs[i].GetIdEmployee() + "\nФИО сотрудника: " + cs[i].GetName() + "\nОтдел: " + cs[i].GetDepartment() + "\nЗаработная плата: " + cs[i].GetWages() + "\n");
+    public void getListEmployees() {
+        for (var arr : this.cs) {
+            System.out.println(arr);
         }
     }
 
-    public int Get_total_costs() {
+    public int getTotalCosts() {
         int totalCosts = 0;
-        for (int i = 0; i < Employee.GetId(); i++) {
-            totalCosts += cs[i].GetWages();
+        for (int i = 0; i < Employee.getId(); i++) {
+            totalCosts += cs[i].getWages();
         }
         return totalCosts;
     }
 
-    public void Get_minimum_wage_employee() {
+    public void getMinimumWageEmployee() {
         int j = 0;
-        for (int i = 1; i < Employee.GetId(); i++) {
-            if (cs[j].GetWages() > cs[i].GetWages())
+        for (int i = 1; i < Employee.getId(); i++) {
+            if (cs[j].getWages() > cs[i].getWages())
                 j = i;
         }
-        System.out.println("Минимальная заработная плата у сотрудника - " + cs[j].GetName() + "\t составляет: " + cs[j].GetWages() + " руб.\n");
+        System.out.println("Минимальная заработная плата у сотрудника - " + cs[j].getName() + "\t составляет: " + cs[j].getWages() + " руб.\n");
     }
 
-    public void Get_maximum_wage_employee() {
+    public void getMaximumWageEmployee() {
         int j = 0;
-        for (int i = 1; i < Employee.GetId(); i++) {
-            if (cs[j].GetWages() < cs[i].GetWages())
+        for (int i = 1; i < Employee.getId(); i++) {
+            if (cs[j].getWages() < cs[i].getWages())
                 j = i;
         }
-        System.out.println("Максимальная заработная плата у сотрудника - " + cs[j].GetName() + "\t составляет: " + cs[j].GetWages() + " руб.\n");
+        System.out.println("Максимальная заработная плата у сотрудника - " + cs[j].getName() + "\t составляет: " + cs[j].getWages() + " руб.\n");
     }
 
-    public int Get_average_value_wages() {
-        return Get_total_costs() / Employee.GetId();
+    public int getAverageValueWages() {
+        return getTotalCosts() / Employee.getId();
     }
 
-    public void Get_full_name_all_employees() {
-        for (int i = 0; i < Employee.GetId(); i++) {
-            System.out.println(cs[i].GetIdEmployee() + ". " + cs[i].GetName());
+    public void getFullNameAllEmployees() {
+        for (int i = 0; i < Employee.getId(); i++) {
+            System.out.println(cs[i].getIdEmployee() + ". " + cs[i].getName());
         }
         System.out.println("\n");
     }
 
-    public void Wage_indexation(int percent) {
+    public void wageIndexation(int percent) {
         float ratio = 1.0f;
         int wage;
         if (percent > 0)
@@ -74,34 +74,34 @@ public class EmployeeBook {
             System.out.println("Процент равен 0. Для индексирования укажите на какой процент произвести индексирование.\n");
             return;
         }
-        for (int i = 0; i < Employee.GetId(); i++) {
-            wage = (int)(Math.ceil((float)cs[i].GetWages() * ratio));
-            cs[i].SetWages(wage);
-            System.out.println("Заработная плата для сотрудника " + cs[i].GetName() + ", при индексировании в " + percent + " процентов, будет - " + cs[i].GetWages());
+        for (int i = 0; i < Employee.getId(); i++) {
+            wage = (int)(Math.ceil((float)cs[i].getWages() * ratio));
+            cs[i].setWages(wage);
+            System.out.println("Заработная плата для сотрудника " + cs[i].getName() + ", при индексировании в " + percent + " процентов, будет - " + cs[i].getWages());
         }
         System.out.println("\n");
     }
 
-    public void Get_wage_employees_below_specified(int wagesLower) {
+    public void getWageEmployeesBelowSpecified(int wagesLower) {
         System.out.println("Сотрудники с заработной платой ниже: " + wagesLower + "\n");
-        for (int i = 0; i < Employee.GetId(); i++) {
-            if (wagesLower > cs[i].GetWages()) {
-                System.out.println("Индекс сотрудника: " + cs[i].GetIdEmployee() + "\nФИО сотрудника: " + cs[i].GetName() + "\nЗаработная плата: " + cs[i].GetWages() + "\n");
+        for (int i = 0; i < Employee.getId(); i++) {
+            if (wagesLower > cs[i].getWages()) {
+                System.out.println("Индекс сотрудника: " + cs[i].getIdEmployee() + "\nФИО сотрудника: " + cs[i].getName() + "\nЗаработная плата: " + cs[i].getWages() + "\n");
             }
         }
     }
 
-    public void Get_wage_employees_more_specified(int wagesLower) {
+    public void getWageEmployeesMoreSpecified(int wagesLower) {
         System.out.println("Сотрудники с заработной платой выше или равной: " + wagesLower + "\n");
-        for (int i = 0; i < Employee.GetId(); i++) {
-            if (wagesLower <= cs[i].GetWages()) {
-                System.out.println("Индекс сотрудника: " + cs[i].GetIdEmployee() + "\nФИО сотрудника: " + cs[i].GetName() + "\nЗаработная плата: " + cs[i].GetWages() + "\n");
+        for (int i = 0; i < Employee.getId(); i++) {
+            if (wagesLower <= cs[i].getWages()) {
+                System.out.println("Индекс сотрудника: " + cs[i].getIdEmployee() + "\nФИО сотрудника: " + cs[i].getName() + "\nЗаработная плата: " + cs[i].getWages() + "\n");
             }
         }
     }
 
-    public void Add_new_employee() throws Exception {
-        if (Employee.GetId() >= SIZE)
+    public void addNewEmployee() throws Exception {
+        if (Employee.getId() >= SIZE)
             System.out.println("Нет свободных ячеек для записи нового сотрудника. Удалите старого сотрудника для записи нового.\n");
         else {
             int department;
@@ -115,24 +115,24 @@ public class EmployeeBook {
             department = inInt.nextInt();
             System.out.println("Введите его заработную плату:\t");
             wage = inInt.nextInt();
-            cs[Employee.GetId()] = new Employee(name, department, wage);
+            cs[Employee.getId()] = new Employee(name, department, wage);
             System.out.println("Сотрудник добавлен!\n");
         }
     }
 
-    public void Remove_employee() {
+    public void removeEmployee() {
         Scanner in = new Scanner(System.in);
         int id;
         int choice;
         System.out.println("Введите индекс сотрудника, которого хотите удалить: ");
         id = in.nextInt();
         if (cs[id-1] != null) {
-            System.out.println("Сотрдуник с индексом '" + cs[id-1].GetIdEmployee() + "' - " + cs[id-1].GetName() +
+            System.out.println("Сотрдуник с индексом '" + cs[id-1].getIdEmployee() + "' - " + cs[id-1].getName() +
                     "\nВы уверены что хотите его удалить?\t1. Да\t2. Нет \nВведите номер ответа:");
             choice = in.nextInt();
             if (choice == 1) {
-                cs[id-1].Shifting_data_object(cs[Employee.GetId()-1]);
-                Employee.Close(cs[Employee.GetId()-1]);
+                cs[id-1].shiftingDataObject(cs[Employee.getId()-1]);
+                Employee.close(cs[Employee.getId()-1]);
                 System.out.println("Сотрудник удален\n:");
             } else if (choice == 2)
                 return;
@@ -145,97 +145,97 @@ public class EmployeeBook {
             System.out.println("Сотрудника с индексом '" + id + "' нет.");
     }
 
-    public void Change_wage_employee() {
+    public void changeWageEmployee() {
         Scanner in = new Scanner(System.in);
         int id;
         int wage;
         System.out.println("Введите индекс сотрудника, ЗП которого хотите поменять:\t");
         id = in.nextInt();
-        System.out.println("Вы выбрали сотрудника - " + cs[id-1].GetName() + "\nУкажите заработную плату:\t");
+        System.out.println("Вы выбрали сотрудника - " + cs[id-1].getName() + "\nУкажите заработную плату:\t");
         wage = in.nextInt();
-        cs[id-1].SetWages(wage);
-        System.out.println("Заработная плата сотруднику " + cs[id-1].GetName() + " изменена:\n");
+        cs[id-1].setWages(wage);
+        System.out.println("Заработная плата сотруднику " + cs[id-1].getName() + " изменена:\n");
     }
 
-    public void Change_department_employee() throws Exception {
+    public void changeDepartmentEmployee() throws Exception {
         Scanner in = new Scanner(System.in);
         int id;
         int department;
         System.out.println("Введите индекс сотрудника, отдел которого хотите поменять:\t");
         id = in.nextInt();
-        System.out.println("Вы выбрали сотрудника - " + cs[id-1].GetName() + "\nУкажите отдел с 1 по 5:\t");
+        System.out.println("Вы выбрали сотрудника - " + cs[id-1].getName() + "\nУкажите отдел с 1 по 5:\t");
         department = in.nextInt();
         if (department <= 0 || department >= 6) throw new Exception("Не корректно указан отдел сотрудника. Отделов модет быть от 1 до 5!");
-        cs[id-1].SetDepartment(department);
-        System.out.println("Отдел сотрудника " + cs[id-1].GetName() + " изменен:\n");
+        cs[id-1].setDepartment(department);
+        System.out.println("Отдел сотрудника " + cs[id-1].getName() + " изменен:\n");
     }
 
-    public void Get_list_employees_by_department() {
+    public void getListEmployeesByDepartment() {
         for (int j = 1; j < 6; j++) {
             System.out.println("Сотрудники отдела №" + j + ":");
-            for (int i = 0; i < Employee.GetId(); i++) {
-                if (j == cs[i].GetDepartment())
-                    System.out.println("Индекс сотрудника: " + cs[i].GetIdEmployee() + "\nФИО сотрудника: " + cs[i].GetName() + "\nЗаработная плата: " + cs[i].GetWages() + "\n");
+            for (int i = 0; i < Employee.getId(); i++) {
+                if (j == cs[i].getDepartment())
+                    System.out.println("Индекс сотрудника: " + cs[i].getIdEmployee() + "\nФИО сотрудника: " + cs[i].getName() + "\nЗаработная плата: " + cs[i].getWages() + "\n");
             }
         }
     }
 
     //Методы для работы с отделами
-    public void Get_minimum_wage_employee_in_department(int department) {
+    public void getMinimumWageEmployeeInDepartment(int department) {
         int j = 0;
         boolean firstEL = false;
-        for (int i = 0; i < Employee.GetId(); i++) {
-            if (department == cs[i].GetDepartment()) {
+        for (int i = 0; i < Employee.getId(); i++) {
+            if (department == cs[i].getDepartment()) {
                 if (!firstEL) {
                     j = i;
                     firstEL = true;
                 }
-                if (cs[j].GetWages() > cs[i].GetWages())
+                if (cs[j].getWages() > cs[i].getWages())
                     j = i;
             }
         }
-        System.out.println("Минимальная заработная плата в отделе №" + department + " у сотрудника - " + cs[j].GetName() + "\t составляет: " + cs[j].GetWages() + " руб.\n");
+        System.out.println("Минимальная заработная плата в отделе №" + department + " у сотрудника - " + cs[j].getName() + "\t составляет: " + cs[j].getWages() + " руб.\n");
     }
 
-    public void Get_Maximum_wage_employee_in_department(int department) {
+    public void getMaximumWageEmployeeInDepartment(int department) {
         int j = 0;
         boolean firstEL = false;
-        for (int i = 0; i < Employee.GetId(); i++) {
-            if (department == cs[i].GetDepartment()) {
+        for (int i = 0; i < Employee.getId(); i++) {
+            if (department == cs[i].getDepartment()) {
                 if (!firstEL) {
                     j = i;
                     firstEL = true;
                 }
-                if (cs[j].GetWages() < cs[i].GetWages())
+                if (cs[j].getWages() < cs[i].getWages())
                     j = i;
             }
         }
-        System.out.println("Максимальная заработная плата в отделе №" + department + " у сотрудника - " + cs[j].GetName() + "\t составляет: " + cs[j].GetWages() + " руб.\n");
+        System.out.println("Максимальная заработная плата в отделе №" + department + " у сотрудника - " + cs[j].getName() + "\t составляет: " + cs[j].getWages() + " руб.\n");
     }
 
-    public int Get_total_costs_in_department(int department) {
+    public int getTotalCostsInDepartment(int department) {
         int totalCosts = 0;
-        for (int i = 0; i < Employee.GetId(); i++) {
-            if (department == cs[i].GetDepartment()) {
-                totalCosts += cs[i].GetWages();
+        for (int i = 0; i < Employee.getId(); i++) {
+            if (department == cs[i].getDepartment()) {
+                totalCosts += cs[i].getWages();
             }
         }
         return totalCosts;
     }
 
-    public int Get_average_value_wages_in_department(int department) {
+    public int getAverageValueWagesInDepartment(int department) {
         int totalCosts = 0;
         int j = 0;
-        for (int i = 0; i < Employee.GetId(); i++) {
-            if (department == cs[i].GetDepartment()) {
-                totalCosts += cs[i].GetWages();
+        for (int i = 0; i < Employee.getId(); i++) {
+            if (department == cs[i].getDepartment()) {
+                totalCosts += cs[i].getWages();
                 j++;
             }
         }
         return totalCosts / j;
     }
 
-    public void Wage_indexation_in_department(int percent, int department) {
+    public void wageIndexationInDepartment(int percent, int department) {
         float ratio = 1.0f;
         int wage;
         if (percent > 0)
@@ -246,21 +246,21 @@ public class EmployeeBook {
             System.out.println("Процент равен 0. Для индексирования укажите на какой процент произвести индексирование.\n");
             return;
         }
-        for (int i = 0; i < Employee.GetId(); i++) {
-            if (department == cs[i].GetDepartment()) {
-                wage = (int)(Math.ceil((float)cs[i].GetWages() * ratio));
-                cs[i].SetWages(wage);
-                System.out.println("Заработная плата для сотрудника " + cs[i].GetName() + " из отдела №" + department + ", при индексировании в " + percent + " процентов, будет - " + cs[i].GetWages());
+        for (int i = 0; i < Employee.getId(); i++) {
+            if (department == cs[i].getDepartment()) {
+                wage = (int)(Math.ceil((float)cs[i].getWages() * ratio));
+                cs[i].setWages(wage);
+                System.out.println("Заработная плата для сотрудника " + cs[i].getName() + " из отдела №" + department + ", при индексировании в " + percent + " процентов, будет - " + cs[i].getWages());
             }
         }
         System.out.println("\n");
     }
 
-    public void Get_list_employees_in_department(int department) {
+    public void getListEmployeesInDepartment(int department) {
         System.out.println("Сотрудники отдела №" + department + ":");
-        for (int i = 0; i < Employee.GetId(); i++) {
-            if (department == cs[i].GetDepartment()) {
-                System.out.println("Индекс сотрудника: " + cs[i].GetIdEmployee() + "\nФИО сотрудника: " + cs[i].GetName() + "\nЗаработная плата: " + cs[i].GetWages() + "\n");
+        for (int i = 0; i < Employee.getId(); i++) {
+            if (department == cs[i].getDepartment()) {
+                System.out.println("Индекс сотрудника: " + cs[i].getIdEmployee() + "\nФИО сотрудника: " + cs[i].getName() + "\nЗаработная плата: " + cs[i].getWages() + "\n");
             }
         }
     }

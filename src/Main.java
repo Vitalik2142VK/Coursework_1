@@ -25,21 +25,21 @@ public class Main {
             choice = in.nextInt();
             switch (choice) {
                 case 1:
-                    eb.Get_list_employees(); break;
+                    eb.getListEmployees(); break;
                 case 2:
-                    System.out.println("Общие расходы на заработную плату сотрудникам: " + eb.Get_total_costs() + " руб.\n"); break;
+                    System.out.println("Общие расходы на заработную плату сотрудникам: " + eb.getTotalCosts() + " руб.\n"); break;
                 case 3:
-                    eb.Get_minimum_wage_employee(); break;
+                    eb.getMinimumWageEmployee(); break;
                 case 4:
-                    eb.Get_maximum_wage_employee(); break;
+                    eb.getMaximumWageEmployee(); break;
                 case 5:
-                    System.out.println("Средняя заработная плата у сотрудников: " + eb.Get_average_value_wages() + " руб.\n"); break;
+                    System.out.println("Средняя заработная плата у сотрудников: " + eb.getAverageValueWages() + " руб.\n"); break;
                 case 6:
-                    eb.Get_full_name_all_employees(); break;
+                    eb.getFullNameAllEmployees(); break;
                 case 7: {
                     System.out.println("Введите процент, на который необходимо индекстровать ЗП.\nДля отрицательного индексирования введите число с минусом \"Пример: -30\"");
                     int percent = in.nextInt();
-                    eb.Wage_indexation(percent);
+                    eb.wageIndexation(percent);
                     break;
                 }
                 case 8: {
@@ -54,21 +54,21 @@ public class Main {
                     choice = in.nextInt();
                     switch (choice) {
                         case 1:
-                            eb.Get_minimum_wage_employee_in_department(department); break;
+                            eb.getMinimumWageEmployeeInDepartment(department); break;
                         case 2:
-                            eb.Get_Maximum_wage_employee_in_department(department); break;
+                            eb.getMaximumWageEmployeeInDepartment(department); break;
                         case 3:
-                            System.out.println("Общие расходы на заработную плату сотрудникам из отдела №" + department + "составляет: " + eb.Get_total_costs_in_department(department) + " руб.\n"); break;
+                            System.out.println("Общие расходы на заработную плату сотрудникам из отдела №" + department + "составляет: " + eb.getTotalCostsInDepartment(department) + " руб.\n"); break;
                         case 4:
-                            System.out.println("Средняя заработная плата у сотрудниковиз отдела №" + department + "составляет: " + eb.Get_average_value_wages_in_department(department) + " руб.\n"); break;
+                            System.out.println("Средняя заработная плата у сотрудниковиз отдела №" + department + "составляет: " + eb.getAverageValueWagesInDepartment(department) + " руб.\n"); break;
                         case 5: {
                             System.out.println("Введите процент, на который необходимо индекстровать ЗП.\nДля отрицательного индексирования введите число с минусом \"Пример: -30\"");
                             int percent = in.nextInt();
-                            eb.Wage_indexation_in_department(percent, department);
+                            eb.wageIndexationInDepartment(percent, department);
                             break;
                         }
                         case 6:
-                            eb.Get_list_employees_in_department(department); break;
+                            eb.getListEmployeesInDepartment(department); break;
                         default: {
                             if (num == 0)
                                 break;
@@ -82,37 +82,37 @@ public class Main {
                 case 9: {
                     System.out.println("Введите сумму, для поиска сотрудников с ЗП меньше указанной суммы.");
                     int wagesLower = in.nextInt();
-                    eb.Get_wage_employees_below_specified(wagesLower);
+                    eb.getWageEmployeesBelowSpecified(wagesLower);
                     break;
                 }
                 case 10: {
                     System.out.println("Введите сумму, для поиска сотрудников с ЗП больше или равной указанной.");
                     int wagesLower = in.nextInt();
-                    eb.Get_wage_employees_more_specified(wagesLower);
+                    eb.getWageEmployeesMoreSpecified(wagesLower);
                     break;
                 }
                 case 11: {
                     try {
-                        eb.Add_new_employee();
+                        eb.addNewEmployee();
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 }
                 case 12:
-                    eb.Remove_employee(); break;
+                    eb.removeEmployee(); break;
                 case 13:
-                    eb.Change_wage_employee(); break;
+                    eb.changeWageEmployee(); break;
                 case 14: {
                     try {
-                        eb.Change_department_employee();
+                        eb.changeDepartmentEmployee();
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 }
                 case 15:
-                    eb.Get_list_employees_by_department(); break;
+                    eb.getListEmployeesByDepartment(); break;
                 default: {
                     if (num == 0)
                         break;

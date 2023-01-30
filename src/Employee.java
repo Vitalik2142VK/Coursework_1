@@ -16,11 +16,11 @@ public class Employee {
     private int wages; // зарплата сотрудника
 
     // Дополнительные методы
-    public static void Close(Employee employee) {
+    public static void close(Employee employee) {
         id--;
         employee = null;
     }
-    public void Shifting_data_object(Employee other) {
+    public void shiftingDataObject(Employee other) {
         this.name = other.name;
         this.department = other.department;
         this.wages = other.wages;
@@ -28,28 +28,33 @@ public class Employee {
 
 
     // Геттеры
-    public static int GetId() {
+    public static int getId() {
         return id;
     }
-    public int GetIdEmployee() {
+    public int getIdEmployee() {
         return idEmployee;
     }
-    public String GetName() {
+    public String getName() {
         return name;
     }
-    public int GetDepartment() {
+    public int getDepartment() {
         return department;
     }
-    public int GetWages() {
+    public int getWages() {
         return wages;
     }
 
     // Сеттеры
-    public void SetDepartment(int department) {
+    public void setDepartment(int department) {
         this.department = department;
     }
-    public void SetWages(int wages) {
+    public void setWages(int wages) {
         this.wages = wages;
     }
 
+    // toString
+
+    public String toString() {
+        return "Индекс сотрудника: " + idEmployee + "\nФИО сотрудника: " + name + "\nОтдел: " + department + "\nЗаработная плата: " + wages + "\n";
+    }
 }
