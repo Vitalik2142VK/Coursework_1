@@ -4,13 +4,14 @@ public class Employee {
         id++;
         idEmployee = id;
         this.name = name;
-        if (department <= 0 || department >= 6) throw new Exception("Не корректно указан отдел сотрудника. Отделов модет быть от 1 до 5!");
+        //if (department <= 0 || department >= 6) throw new Exception("Не корректно указан отдел сотрудника. Отделов модет быть от 1 до 5!");
+        checkingDepartmentNumber(department);
         this.department = department;
         this.wages = wages;
     }
 
     private static int id = 0;
-    private int idEmployee; // индификатор сотрудника
+    private final int idEmployee; // индификатор сотрудника
     private String name; // имя сотрудника
     private int department; // отдел сотрудника
     private int wages; // зарплата сотрудника
@@ -45,7 +46,8 @@ public class Employee {
     }
 
     // Сеттеры
-    public void setDepartment(int department) {
+    public void setDepartment(int department) throws Exception{
+        checkingDepartmentNumber(department);
         this.department = department;
     }
     public void setWages(int wages) {
@@ -56,5 +58,12 @@ public class Employee {
 
     public String toString() {
         return "Индекс сотрудника: " + idEmployee + "\nФИО сотрудника: " + name + "\nОтдел: " + department + "\nЗаработная плата: " + wages + "\n";
+    }
+
+    // Проверка номера отдела
+
+    private void checkingDepartmentNumber(int department) throws Exception {
+        if (department <= 0 || department >= 6)
+            throw new Exception("Не корректно указан отдел сотрудника. Отделов модет быть от 1 до 5!");
     }
 }

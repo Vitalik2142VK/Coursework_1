@@ -3,9 +3,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        EmployeeBook eb = null;
+        EmployeeBook employeeBook;
         try {
-            eb = new EmployeeBook();
+            employeeBook = new EmployeeBook();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -25,21 +25,21 @@ public class Main {
             choice = in.nextInt();
             switch (choice) {
                 case 1:
-                    eb.getListEmployees(); break;
+                    employeeBook.listEmployees(); break;
                 case 2:
-                    System.out.println("Общие расходы на заработную плату сотрудникам: " + eb.getTotalCosts() + " руб.\n"); break;
+                    System.out.println("Общие расходы на заработную плату сотрудникам: " + employeeBook.totalWages() + " руб.\n"); break;
                 case 3:
-                    eb.getMinimumWageEmployee(); break;
+                    employeeBook.minimumWageEmployee(); break;
                 case 4:
-                    eb.getMaximumWageEmployee(); break;
+                    employeeBook.maximumWageEmployee(); break;
                 case 5:
-                    System.out.println("Средняя заработная плата у сотрудников: " + eb.getAverageValueWages() + " руб.\n"); break;
+                    System.out.println("Средняя заработная плата у сотрудников: " + employeeBook.averageValueWages() + " руб.\n"); break;
                 case 6:
-                    eb.getFullNameAllEmployees(); break;
+                    employeeBook.fullNameAllEmployees(); break;
                 case 7: {
                     System.out.println("Введите процент, на который необходимо индекстровать ЗП.\nДля отрицательного индексирования введите число с минусом \"Пример: -30\"");
                     int percent = in.nextInt();
-                    eb.wageIndexation(percent);
+                    employeeBook.wageIndexation(percent);
                     break;
                 }
                 case 8: {
@@ -54,21 +54,21 @@ public class Main {
                     choice = in.nextInt();
                     switch (choice) {
                         case 1:
-                            eb.getMinimumWageEmployeeInDepartment(department); break;
+                            employeeBook.minimumWageEmployeeInDepartment(department); break;
                         case 2:
-                            eb.getMaximumWageEmployeeInDepartment(department); break;
+                            employeeBook.maximumWageEmployeeInDepartment(department); break;
                         case 3:
-                            System.out.println("Общие расходы на заработную плату сотрудникам из отдела №" + department + "составляет: " + eb.getTotalCostsInDepartment(department) + " руб.\n"); break;
+                            System.out.println("Общие расходы на заработную плату сотрудникам из отдела №" + department + "составляет: " + employeeBook.totalCostsInDepartment(department) + " руб.\n"); break;
                         case 4:
-                            System.out.println("Средняя заработная плата у сотрудниковиз отдела №" + department + "составляет: " + eb.getAverageValueWagesInDepartment(department) + " руб.\n"); break;
+                            System.out.println("Средняя заработная плата у сотрудниковиз отдела №" + department + "составляет: " + employeeBook.averageValueWagesInDepartment(department) + " руб.\n"); break;
                         case 5: {
                             System.out.println("Введите процент, на который необходимо индекстровать ЗП.\nДля отрицательного индексирования введите число с минусом \"Пример: -30\"");
                             int percent = in.nextInt();
-                            eb.wageIndexationInDepartment(percent, department);
+                            employeeBook.wageIndexationInDepartment(percent, department);
                             break;
                         }
                         case 6:
-                            eb.getListEmployeesInDepartment(department); break;
+                            employeeBook.listEmployeesInDepartment(department); break;
                         default: {
                             if (num == 0)
                                 break;
@@ -82,37 +82,37 @@ public class Main {
                 case 9: {
                     System.out.println("Введите сумму, для поиска сотрудников с ЗП меньше указанной суммы.");
                     int wagesLower = in.nextInt();
-                    eb.getWageEmployeesBelowSpecified(wagesLower);
+                    employeeBook.wageEmployeesBelowSpecified(wagesLower);
                     break;
                 }
                 case 10: {
                     System.out.println("Введите сумму, для поиска сотрудников с ЗП больше или равной указанной.");
                     int wagesLower = in.nextInt();
-                    eb.getWageEmployeesMoreSpecified(wagesLower);
+                    employeeBook.wageEmployeesMoreSpecified(wagesLower);
                     break;
                 }
                 case 11: {
                     try {
-                        eb.addNewEmployee();
+                        employeeBook.addNewEmployee();
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 }
                 case 12:
-                    eb.removeEmployee(); break;
+                    employeeBook.removeEmployee(); break;
                 case 13:
-                    eb.changeWageEmployee(); break;
+                    employeeBook.changeWageEmployee(); break;
                 case 14: {
                     try {
-                        eb.changeDepartmentEmployee();
+                        employeeBook.changeDepartmentEmployee();
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
                     break;
                 }
                 case 15:
-                    eb.getListEmployeesByDepartment(); break;
+                    employeeBook.listEmployeesByDepartment(); break;
                 default: {
                     if (num == 0)
                         break;
