@@ -2,6 +2,9 @@ import java.util.Scanner;
 
 public class EmployeeBook {
 
+    private Employee[] companyStaff; // cs - companyStaff
+    private final int SIZE = 10;
+
     EmployeeBook() throws Exception {
         companyStaff = new Employee[SIZE];
         companyStaff[0] = new Employee("Пупкин Иван Сергеевич", 1, 50000);
@@ -48,8 +51,8 @@ public class EmployeeBook {
         System.out.println("Максимальная заработная плата у сотрудника - " + companyStaff[j].getName() + "\t составляет: " + companyStaff[j].getWages() + " руб.\n");
     }
 
-    public int averageValueWages() {
-        return totalWages() / Employee.getId();
+    public double averageValueWages() {
+        return (totalWages() / Employee.getId());
     }
 
     public void fullNameAllEmployees() {
@@ -127,7 +130,7 @@ public class EmployeeBook {
                     "\nВы уверены что хотите его удалить?\t1. Да\t2. Нет \nВведите номер ответа:");
             choice = in.nextInt();
             if (choice == 1) {
-                companyStaff[id-1].shiftingDataObject(companyStaff[Employee.getId()-1]);
+                companyStaff[id-1].copy(companyStaff[Employee.getId()-1]);
                 Employee.close(companyStaff[Employee.getId()-1]);
                 System.out.println("Сотрудник удален\n:");
             } else if (choice == 2)
@@ -178,14 +181,11 @@ public class EmployeeBook {
     //Методы для работы с отделами
     public void minimumWageEmployeeInDepartment(int department) {
         int j = 0;
-        boolean firstEL = false;
         for (int i = 0; i < Employee.getId(); i++) {
             if (department == companyStaff[i].getDepartment()) {
-                if (!firstEL) {
+                if (companyStaff[j].getWages() > companyStaff[i].getWages() && companyStaff[j].getDepartment() == companyStaff[i].getDepartment())
                     j = i;
-                    firstEL = true;
-                }
-                if (companyStaff[j].getWages() > companyStaff[i].getWages())
+                else if (companyStaff[j].getDepartment() != companyStaff[i].getDepartment())
                     j = i;
             }
         }
@@ -194,14 +194,11 @@ public class EmployeeBook {
 
     public void maximumWageEmployeeInDepartment(int department) {
         int j = 0;
-        boolean firstEL = false;
         for (int i = 0; i < Employee.getId(); i++) {
             if (department == companyStaff[i].getDepartment()) {
-                if (!firstEL) {
+                if (companyStaff[j].getWages() < companyStaff[i].getWages() && companyStaff[j].getDepartment() == companyStaff[i].getDepartment())
                     j = i;
-                    firstEL = true;
-                }
-                if (companyStaff[j].getWages() < companyStaff[i].getWages())
+                else if (companyStaff[j].getDepartment() != companyStaff[i].getDepartment())
                     j = i;
             }
         }
@@ -218,7 +215,7 @@ public class EmployeeBook {
         return totalCosts;
     }
 
-    public int averageValueWagesInDepartment(int department) {
+    public double averageValueWagesInDepartment(int department) {
         int totalCosts = 0;
         int j = 0;
         for (int i = 0; i < Employee.getId(); i++) {
@@ -260,6 +257,4 @@ public class EmployeeBook {
         }
     }
 
-    private Employee[] companyStaff; // cs - companyStaff
-    private final int SIZE = 10;
 }

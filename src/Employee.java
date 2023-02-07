@@ -21,7 +21,7 @@ public class Employee {
         id--;
         employee = null;
     }
-    public void shiftingDataObject(Employee other) {
+    public void copy(Employee other) {
         this.name = other.name;
         this.department = other.department;
         this.wages = other.wages;
@@ -56,6 +56,7 @@ public class Employee {
 
     // toString
 
+    @Override
     public String toString() {
         return "Индекс сотрудника: " + idEmployee + "\nФИО сотрудника: " + name + "\nОтдел: " + department + "\nЗаработная плата: " + wages + "\n";
     }
