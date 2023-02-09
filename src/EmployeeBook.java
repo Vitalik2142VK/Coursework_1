@@ -4,6 +4,7 @@ public class EmployeeBook {
 
     private Employee[] companyStaff; // cs - companyStaff
     private final int SIZE = 10;
+    private int id = SIZE;
 
     EmployeeBook() throws Exception {
         companyStaff = new Employee[SIZE];
@@ -21,7 +22,8 @@ public class EmployeeBook {
 
     public void listEmployees() {
         for (var arr : this.companyStaff) {
-            System.out.println(arr);
+            if (arr != null)
+                System.out.println(arr);
         }
     }
 
@@ -121,26 +123,27 @@ public class EmployeeBook {
 
     public void removeEmployee() {
         Scanner in = new Scanner(System.in);
-        int id;
+        int idEmployee;
         int choice;
         System.out.println("Введите индекс сотрудника, которого хотите удалить: ");
-        id = in.nextInt();
-        if (companyStaff[id-1] != null) {
-            System.out.println("Сотрдуник с индексом '" + companyStaff[id-1].getIdEmployee() + "' - " + companyStaff[id-1].getName() +
+        idEmployee = in.nextInt();
+        if (companyStaff[idEmployee-1] != null) {
+            System.out.println("Сотрдуник с индексом '" + companyStaff[idEmployee-1].getIdEmployee() + "' - " + companyStaff[idEmployee-1].getName() +
                     "\nВы уверены что хотите его удалить?\t1. Да\t2. Нет \nВведите номер ответа:");
             choice = in.nextInt();
             if (choice == 1) {
-                companyStaff[id-1].copy(companyStaff[Employee.getId()-1]);
-                Employee.close(companyStaff[Employee.getId()-1]);
-                System.out.println("Сотрудник удален\n:");
+                companyStaff[idEmployee-1].copy(companyStaff[Employee.getId()-1]);
+                companyStaff[Employee.getId()-1] = null;
+                Employee.setId(--id);
+                System.out.println("Сотрудник удален:\n");
             } else if (choice == 2)
-                System.out.println("Удаление отменено\n:");
+                System.out.println("Удаление отменено:\n");
             else {
                 System.out.println("Не корректно введен пункт!\n");
             }
         }
         else
-            System.out.println("Сотрудника с индексом '" + id + "' нет.");
+            System.out.println("Сотрудника с индексом '" + idEmployee + "' нет.");
     }
 
     public void changeWageEmployee() {

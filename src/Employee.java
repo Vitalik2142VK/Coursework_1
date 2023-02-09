@@ -17,16 +17,11 @@ public class Employee {
     private int wages; // зарплата сотрудника
 
     // Дополнительные методы
-    public static void close(Employee employee) {
-        id--;
-        employee = null;
-    }
     public void copy(Employee other) {
         this.name = other.name;
         this.department = other.department;
         this.wages = other.wages;
     }
-
 
     // Геттеры
     public static int getId() {
@@ -46,6 +41,9 @@ public class Employee {
     }
 
     // Сеттеры
+    public static void setId(int idOther) {
+        id = idOther;
+    }
     public void setDepartment(int department) throws Exception{
         checkingDepartmentNumber(department);
         this.department = department;
